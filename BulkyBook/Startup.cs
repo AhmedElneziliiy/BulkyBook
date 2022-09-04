@@ -42,6 +42,22 @@ namespace BulkyBook
             services.AddControllersWithViews();
             services.AddSingleton<IEmailSender, EmailSender>();
             services.AddRazorPages();
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+            services.AddAuthentication().AddFacebook(options =>
+            {
+                options.AppId = "1083890992268573";
+                options.AppSecret = "2e1c028820c070eaeb469015e0ed9a70";
+            });
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = "799655957073-v8eifpgeffhdn6kvhpb8mkuf9v1j514m.apps.googleusercontent.com";
+                options.ClientSecret = "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";
+            });
 
         }
 
