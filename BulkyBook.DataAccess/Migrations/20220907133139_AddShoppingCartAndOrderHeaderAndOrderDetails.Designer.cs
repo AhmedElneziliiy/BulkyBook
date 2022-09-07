@@ -4,14 +4,16 @@ using BulkyBook.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BulkyBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220907133139_AddShoppingCartAndOrderHeaderAndOrderDetails")]
+    partial class AddShoppingCartAndOrderHeaderAndOrderDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,7 +228,7 @@ namespace BulkyBook.DataAccess.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("BulkyBook.Models.ShoppingCart", b =>
+            modelBuilder.Entity("BulkyBook.Models.ShopingCart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -248,7 +250,7 @@ namespace BulkyBook.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ShoppingCarts");
+                    b.ToTable("ShopingCarts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -528,7 +530,7 @@ namespace BulkyBook.DataAccess.Migrations
                     b.Navigation("CoverType");
                 });
 
-            modelBuilder.Entity("BulkyBook.Models.ShoppingCart", b =>
+            modelBuilder.Entity("BulkyBook.Models.ShopingCart", b =>
                 {
                     b.HasOne("BulkyBook.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
